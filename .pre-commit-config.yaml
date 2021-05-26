@@ -30,6 +30,11 @@ repos:
         language: python
         types: [python]
         args:  [--ini, .bandit, --recursive, src,tests]
+      - id: mypy
+        name: mypy
+        entry: mypy
+        types: [python]
+        language: python
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v3.4.0
     hooks:
