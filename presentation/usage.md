@@ -34,6 +34,10 @@ Note:
 
 ---
 
+![git commit skip](images/git_commit_skip.png)
+
+---
+
 ## Continuous Integration
 
 ```bash
