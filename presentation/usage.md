@@ -23,7 +23,7 @@ Note:
 
 ---
 
-![git commit failure](images/git_commit_fail.png)
+<img src="images/git_commit_fail.png" alt="git commit failure" height="650px"/>
 
 Note:
 - Linters only show errors but generally don't fix the issue.

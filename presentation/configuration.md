@@ -77,7 +77,8 @@ I don't care about missing docstrings as I try to keep them to a minimum. Instea
 
 ## pre-commit
 
-```yaml
+<span style="font-size: 20px;">
+<pre class="code-wrapper"><code class="yaml hljs" style="max-height: none; height: 585px;">
 repos:
   - repo: local
     hooks:
@@ -121,7 +122,10 @@ repos:
       - id: end-of-file-fixer
         exclude: .*(min.js|min.css|html|svg|css.map|js.map)
       - id: trailing-whitespace
-```
+        exclude: .*(md)
+</code></pre>
+</span>
+
 
 Note:
 Notice that everything is setup as "local" because I keep track of the packages (black, flake8, etc.) in my dev-requirements.in.
