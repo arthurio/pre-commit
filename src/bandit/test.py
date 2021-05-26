@@ -4,3 +4,5 @@ def test(number: int) -> str:
     password = "7890"  # nosec: B105
     print(password)
     # comment
+
+    assert False is False
