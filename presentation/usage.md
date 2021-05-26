@@ -4,8 +4,8 @@
 
 ## Setup your IDE/Editor
 
-![pycharm](images/pycharm.png)  ![vim](images/vim.png)  ![vscode](images/vscode.png)
-![sublime](images/sublime.png)  ![emacs](images/emacs.png)  ![atom](images/atom.png)
+![pycharm](images/pycharm.png)  ![vim](images/vim.png)  ![vscode](images/vscode.png)  
+![sublime](images/sublime.png)  ![emacs](images/emacs.png)  ![atom](images/atom.png)  
 
 ---
 
