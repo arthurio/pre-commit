@@ -1,6 +1,7 @@
-from utils import set_env
 import os
 import sys
+
+from ..utils import set_env
 
 
 def test(number: int) -> str:
@@ -10,7 +11,9 @@ def test(number: int) -> str:
 
     print(password)
 
-    print("This is a very long text, a bit longer than what is allowed by black and should be reformatted don't you think?")
+    print(
+        "This is a very long text, a bit longer than what is allowed by black and should be reformatted don't you think?"
+    )
 
     if number > 10:
         return None
@@ -24,6 +27,8 @@ test(os.getenv("NUMBER"))
 set_env()
 
 test(int(os.getenv("NUMBER")))
+
+
 class Test:
     pass
 
@@ -31,5 +36,6 @@ class Test:
 class OtherTest:
     def some_method(self):
         ...
+
     def some_other_method(self):
         ...
