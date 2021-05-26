@@ -14,6 +14,7 @@
 ```bash
 pre-commit install
 git add .
+git commit -m "Some bad code"
 ```
 
 Note:
@@ -22,8 +23,14 @@ Note:
 
 ---
 
-![git commit](images/git_commit.png)
+![git commit failure](images/git_commit_fail.png)
 
+Note:
+- Linters only show errors but generally don't fix the issue.
+- Formatters automatically fix the code so you'll unstaged changes.
+---
+
+![git commit](images/git_commit.png)
 
 ---
 
