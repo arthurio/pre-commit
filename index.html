@@ -36,7 +36,9 @@
                         ## Formatters  🧼 ✨
 
                         [isort](https://pycqa.github.io/isort/): isort your imports, so you don't have to.
+
                         [black](https://black.readthedocs.io/en/stable/): The Uncompromising Code Formatter.
+
                         [flynt](https://github.com/ikamensh/flynt): String formatting converter.
 
                         ---
@@ -44,8 +46,11 @@
                         ## Linters  👮‍♀️👮‍♂️
 
                         [bandit](https://bandit.readthedocs.io/en/latest/): Find common security issues.
+
                         [flake8](https://flake8.pycqa.org/en/latest/index.html#): Your Tool For Style Guide Enforcement.
+
                         [flake8-docstrings](https://gitlab.com/pycqa/flake8-docstrings): Flake8 plugin to include checks provided by pep257.
+
                         [mypy](https://mypy.readthedocs.io/en/stable/index.html): Static type checker.
 
                         ---
@@ -107,7 +112,7 @@
                         skips: B101
                         ```
 
-                        - [B101 - assert used](https://bandit.readthedocs.io/en/latest/plugins/index.html#complete-test-plugin-listing)
+                        - [B101](https://bandit.readthedocs.io/en/latest/plugins/index.html#complete-test-plugin-listing): assert used
 
                         Note:
                         - ⚠️  Don't confuse the "ini" file **AND/OR** the "yaml" config file. ⚠️
@@ -122,15 +127,16 @@
 
                         [flake8]
                         max_line_length = 120
-                        ignore = W503,D1
+                        ignore = D1
                         docstring-convention = google
                         ```
 
-                        - W503: Line break occurred before a binary operator
-                        - D1: [Missing docstring](http://www.pydocstyle.org/en/stable/error_codes.html)
+                        - [W503](https://www.flake8rules.com/rules/W503.html): Line break occurred before a binary operator
+                        - [D1](http://www.pydocstyle.org/en/stable/error_codes.html): Missing docstring
 
                         Note:
-                        I don't care about missing docstrings as I try to keep them to a minimum. Instead I prefer to rely on explicit variable and function names, as well as type hints.
+                        - I don't care about missing docstrings as I try to keep them to a minimum. Instead I prefer to rely on explicit variable and function names, as well as type hints.
+                        - W503 is not compatible with black and goes against PEP 8.
 
                         ---
 
