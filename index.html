@@ -204,7 +204,13 @@
                         </code></pre>
                         </span>
                         <aside class="notes">
-                            Notice that everything is setup as "local" because I keep track of the packages (black, flake8, etc.) in my dev-requirements.in.
+                            Notice that everything is setup as "local" because I keep track of the packages (black, flake8, etc.) in my dev requirements.
+                            Benefits are:
+                            <ul>
+                                <li>Tools are installed for IDEs instead of separate virtual environment just for pre-commit.</li>
+                                <li>You can have dependabot keep your tools up to date.</li>
+                                <li>Keeps things in sync between dev environment and pre-commit.</li>
+                            </ul>
                         </aside>
                     </section>
                     <section data-markdown>
@@ -257,8 +263,8 @@
                         <img src="images/git_commit_fail.png" alt="git commit failure" height="650px"/>
                         <aside class="notes">
                             <ul>
-                                <li>Linters only show errors but generally don't fix the issue.</li>
-                                <li>Formatters automatically fix the code so you'll unstaged changes.</li>
+                                <li>Linters only show errors.</li>
+                                <li>Formatters automatically fix the code so you might have unstaged changes.</li>
                             </ul>
                         </aside>
                     </section>
@@ -309,7 +315,7 @@
                 slideNumber: "c/t",
 				controls: true,
 				progress: true,
-                showNotes: false,  // Set to true for printing pdf
+                // showNotes: "separate-page",  // Uncomment for printing pdf
 			});
 		</script>
 	</body>
