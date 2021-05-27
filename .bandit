@@ -1,3 +1,0 @@
-[bandit]
-targets: src,tests
-skips: B101
