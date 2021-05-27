@@ -35,17 +35,17 @@
 
                         ## Formatters  🧼 ✨
 
-                        [isort](https://pycqa.github.io/isort/): isort your imports, so you don't have to.  
-                        [black](https://black.readthedocs.io/en/stable/): The Uncompromising Code Formatter.  
+                        [isort](https://pycqa.github.io/isort/): isort your imports, so you don't have to.
+                        [black](https://black.readthedocs.io/en/stable/): The Uncompromising Code Formatter.
                         [flynt](https://github.com/ikamensh/flynt): String formatting converter.
 
                         ---
 
                         ## Linters  👮‍♀️👮‍♂️
 
-                        [bandit](https://bandit.readthedocs.io/en/latest/): Find common security issues.  
-                        [flake8](https://flake8.pycqa.org/en/latest/index.html#): Your Tool For Style Guide Enforcement.  
-                        [flake8-docstrings](https://gitlab.com/pycqa/flake8-docstrings): Flake8 plugin to include checks provided by pep257.  
+                        [bandit](https://bandit.readthedocs.io/en/latest/): Find common security issues.
+                        [flake8](https://flake8.pycqa.org/en/latest/index.html#): Your Tool For Style Guide Enforcement.
+                        [flake8-docstrings](https://gitlab.com/pycqa/flake8-docstrings): Flake8 plugin to include checks provided by pep257.
                         [mypy](https://mypy.readthedocs.io/en/stable/index.html): Static type checker.
 
                         ---
@@ -132,6 +132,19 @@
                         Note:
                         I don't care about missing docstrings as I try to keep them to a minimum. Instead I prefer to rely on explicit variable and function names, as well as type hints.
 
+                        ---
+
+                        ## Mypy
+
+                        ```ini
+                        # mypy.ini
+
+                        [mypy]
+                        mypy_path = ./src:./tests
+                        ```
+
+                        Note:
+                        Mypy doesn't support pyproject.toml configuration, only mypy.ini and setup.cfg.
                     </section>
                     <section>
                         <h2>pre-commit</h2>
@@ -217,7 +230,7 @@
 
                         ## Setup your IDE/Editor
 
-                        ![pycharm](images/pycharm.png)  ![vim](images/vim.png)  ![vscode](images/vscode.png)  
+                        ![pycharm](images/pycharm.png)  ![vim](images/vim.png)  ![vscode](images/vscode.png)
                         ![sublime](images/sublime.png)  ![emacs](images/emacs.png)  ![atom](images/atom.png)
 
                         ---
