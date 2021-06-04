@@ -19,9 +19,9 @@
                 <section>
                     <h2>format | lint | pre-commit</h2>
                     <h3>✨ 🐍 ✨</h3>
-                    <aside>
+                    <aside class="notes">
                         Today we are going to talk about tools to help you have a consistent style guide across projects and teams.
-                        And how to automate it with pre-commit.
+                        And how to automate this process with pre-commit.
                     </aside>
                 </section>
                 <section>
@@ -45,6 +45,10 @@
 
                         [flynt](https://github.com/ikamensh/flynt): String formatting converter.
 
+                        Note:
+                        TIP: Usually formatters will make modifications to your code so make sure you stage things
+                        before running them if you want to see the diffs.
+
                         ---
 
                         ## Linters  👮‍♀️👮‍♂️
@@ -57,11 +61,19 @@
 
                         [mypy](https://mypy.readthedocs.io/en/stable/index.html): Static type checker.
 
+                        Note:
+                        Linters help you identify problems before they become one and most of all can help with code
+                        completion and hints if you use an IDE or editor that supports it.
+
                         ---
 
                         ## Automation  👨‍🔧🤖
 
                         [pre-commit](https://pre-commit.com/): A framework for managing and maintaining multi-language pre-commit hooks.
+
+                        Note:
+                        All sorts of hooks are supported, not just pre-commit, but that's the only one I personally
+                        have a use for.
                     </section>
                 </section>
                 <section>
@@ -85,6 +97,12 @@
                         line-length = 120
                         ```
 
+                        Note:
+                        Black is opinionated for a reason and I agree with most of their decisions so I would recommend
+                        to stick to the defaults, especially if you don't want to justify yourself, you can just blame
+                        it on Łukasz Langa and cut the conversation short.
+                        Here you can see that I changed the line length but it's based on my code style.
+
                         ---
 
                         ## isort
@@ -98,11 +116,23 @@
                         skip_gitignore = true
                         ```
 
+                        Note:
+                        - Skiping gitignore is critical if you place your virtualenv in your repo or have a
+                          node_modules folder lying around for example.
+                        - profile = "black" is important to make it compatible otherwise they'll fight each other for
+                          the formatting of the imports.
+                        - line_length is just there to keep things consistent across tools.
+
+
                         ---
 
                         ## flynt
 
                         Nothing to see here 👀 ...
+
+                        Note:
+                        Flynt just magically works all the time. I haven't had a single issue with it after 2 years of
+                        use.
 
                         ---
 
@@ -119,9 +149,12 @@
                         - [B101](https://bandit.readthedocs.io/en/latest/plugins/index.html#complete-test-plugin-listing): assert used
 
                         Note:
+                        The configuration for bandit is a bit painful... But it might catch big mistakes like commiting
+                        a token, api key or password. So worth having IMO.
                         - ⚠️  Don't confuse the "ini" file **AND/OR** the "yaml" config file. ⚠️
                         - assert is removed with compiling to optimized byte code.
-                        - Bandit likes to complain about random, use the secrets module instead if you can or silent individual lines with `# nosec: B311`
+                        - Bandit likes to complain about random, use the secrets module instead if you can or silent
+                          individual lines with `# nosec: B311`
                         ---
 
                         ## flake8/flake8-docstrings
@@ -131,7 +164,7 @@
 
                         [flake8]
                         max_line_length = 120
-                        ignore = D1
+                        ignore = W503,D1
                         docstring-convention = google
                         ```
 
@@ -139,8 +172,10 @@
                         - [D1](http://www.pydocstyle.org/en/stable/error_codes.html): Missing docstring
 
                         Note:
-                        - I don't care about missing docstrings as I try to keep them to a minimum. Instead I prefer to rely on explicit variable and function names, as well as type hints.
-                        - W503 is not compatible with black and goes against PEP 8.
+                        Gives you great insights like unused imports, undefined variables, etc.
+                        - W503: is not compatible with black and goes against PEP 8.
+                        - D1: I don't care about missing docstrings as I try to keep them to a minimum. Instead I prefer
+                          to rely on explicit variable and function names, as well as type hints.
 
                         ---
 
@@ -150,12 +185,13 @@
                         # mypy.ini
 
                         [mypy]
-                        mypy_path = ./src
+                        mypy_path = src
                         ```
 
                         Note:
                         - Mypy doesn't support pyproject.toml configuration, only mypy.ini and setup.cfg.
-                        - `mypy_path`: May not be required if you work on a library or package. You might need it for an application.
+                        - `mypy_path`: May not be required if you work on a library or package.
+                          You might need it for an application.
                     </section>
                     <section>
                         <h2>pre-commit</h2>
@@ -249,6 +285,10 @@
 
                         ![pycharm](images/pycharm.png)  ![vim](images/vim.png)  ![vscode](images/vscode.png)
                         ![sublime](images/sublime.png)  ![emacs](images/emacs.png)  ![atom](images/atom.png)
+
+                        Note:
+                        This is the first place where having those tools running in the background helps tremendously.
+                        Take the time to setup your IDE or editor, this is your most important environment.
 
                         ---
 
