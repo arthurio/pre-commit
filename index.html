@@ -20,14 +20,21 @@
                     <h2>format | lint | pre-commit</h2>
                     <h3>✨ 🐍 ✨</h3>
                     <aside class="notes">
-                        Today we are going to talk about tools to help you have a consistent style guide across projects and teams.
-                        And how to automate this process with pre-commit.
+                        Today we are going to talk about tools that will help you achieve python code style consistency across projects and teams.
+                        And how to keep it that way by automating the process with the pre-commit package.
                     </aside>
                 </section>
                 <section>
                     <p><img style="margin: -10px 15px;" height="50px" src="images/linkedin.png"/><a style="text-decoration: none;" href="https://www.linkedin.com/in/arthurio/" target="_blank">linkedin.com/in/arthurio</a></p>
                     <p><img style="margin: -10px 15px;" height="50px" src="images/notivize.png"/><a style="text-decoration: none;" href="https://notivize.com" target="_blank">notivize.com</a></p>
                     <p><img style="margin: -10px 15px;" height="50px" src="images/github.png"/><a style="text-decoration: none;" href="https://github.com/arthurio/pre-commit" target="_blank">github.com/arthurio/pre-commit</a></p>
+                    <aside class="notes">
+                        <p>I'm Arthur Rio, CTO at Notivize. We have built a notification system plateform so you don't have
+                        to build your own. If you need notications with complicated rules, multiple channels, templates,
+                        make sure to check us out!</p>
+                        <p>And if you know someone who loves code quality as much as I do and wants to join an early startup, please reach out to me.</p>
+                        <p>The slides, configuration samples and code examples are available on the github repo you see here.</p>
+                    </aside>
                 </section>
                 <section>
                     <section data-markdown>
@@ -46,9 +53,14 @@
                         [flynt](https://github.com/ikamensh/flynt): String formatting converter.
 
                         Note:
-                        TIP: Usually formatters will make modifications to your code so make sure you stage things
-                        before running them if you want to see the diffs.
 
+                        - isort: Helps you keep your imports ordered and grouped properly: Standard library, third party, local/application.
+                        - black: Break things down to fit max line length, use double quotes everywhere, proper spacing between function and class definitions, etc.
+                        - flynt: Transform as many string formatting as possible into f strings.
+
+                        TIP: Formatters will make modifications to your code in place. So, if you want to run them
+                        manually, I would suggest you to stage your changes first (`git add`) so that you can see the
+                        changes easily with `git diff`.
                         ---
 
                         ## Linters  👮‍♀️👮‍♂️
@@ -62,6 +74,19 @@
                         [mypy](https://mypy.readthedocs.io/en/stable/index.html): Static type checker.
 
                         Note:
+                        - bandit:
+                            1. api key, password, token leaks.
+                            2. usage of "unsafe" packages (random, pickle) or algorithms (md5)
+                            3. bad file permissions
+                            4. mark safe
+                            5. etc.
+                        - flake8:
+                            1. Unused/undefined variable
+                            2. Unused/missing import
+                            3. wildcard import
+                            4. missing formatting argument
+                            5. etc.
+                        - flake8 plugins: flake8-fastapi, flake8-eradicate, etc. https://github.com/DmytroLitvinov/awesome-flake8-extensions
                         Linters help you identify problems before they become one and most of all can help with code
                         completion and hints if you use an IDE or editor that supports it.
 
@@ -84,6 +109,12 @@
 
                         Keep it to a minimum
 
+                        Note:
+
+                        If you can, try not to change any of the defaults, especially if you have multiple projects.
+                        They'll get out of sync quickly. And what makes it somewhat worse is that there is not yet a
+                        consensus on using pyproject.toml for configuration, only black and isort are using it at the
+                        moment.
 
                         ---
 
@@ -301,8 +332,10 @@
                         ```
 
                         Note:
-                        - You can configure pre-commit to use any sort of hooks, pre/post push, pre/post message, etc.
-                        - pre-commit runs only for the staged files, not the entire project. And only relevant linters/formatters are applied.
+                        - pre-commit runs only for the staged files, not the entire project. And only relevant
+                          linters/formatters are applied.
+                        - Also, because pre-commit will run everytime you commit, make sure you keep it fast otherwise
+                          nobody will want to use it.
                     </section>
                     <section>
                         <img src="images/git_commit_fail.png" alt="git commit failure" height="650px"/>
