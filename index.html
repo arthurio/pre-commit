@@ -210,6 +210,10 @@
                         - D1: I don't care about missing docstrings as I try to keep them to a minimum. Instead I prefer
                           to rely on explicit variable and function names, as well as type hints.
 
+                        Doesn't support pyproject.toml because of legacy code around configuration that needs to be
+                        cleaned up first. Listen to test & code episode 156 where Brian Okken interviews Anthony Sottile,
+                        a maintainer of flake8.
+
                         ---
 
                         ## Mypy
@@ -225,6 +229,7 @@
                             "package.*",
                             "otherpackage.*",
                         ]
+                        ignore_missing_imports = true
                         ```
 
                         Note:
