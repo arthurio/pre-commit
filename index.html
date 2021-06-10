@@ -215,14 +215,20 @@
                         ## Mypy
 
                         ```ini
-                        # mypy.ini
+                        # pyproject.toml
 
-                        [mypy]
-                        mypy_path = src
+                        [tool.mypy]
+                        mypy_path = ["src"]
+
+                        [[tool.mypy.overrides]]
+                        module = [
+                            "package.*",
+                            "otherpackage.*",
+                        ]
                         ```
 
                         Note:
-                        - Mypy doesn't support pyproject.toml configuration, only mypy.ini and setup.cfg.
+                        - Mypy supports pyproject.toml only since the latest release couple weeks ago (0.901)
                         - `mypy_path`: May not be required if you work on a library or package.
                           You might need it for an application.
                     </section>
