@@ -6,6 +6,9 @@ from ..utils import set_env
 
 def test(number: int) -> str:
     print(password)
+
+
+
     access_token = "1234"  # nosec
     password = "7890"  # nosec
 
@@ -33,9 +36,15 @@ class Test:
     pass
 
 
+
 class OtherTest:
+
+
+
     def some_method(self):
         ...
+
+
 
     def some_other_method(self):
         ...

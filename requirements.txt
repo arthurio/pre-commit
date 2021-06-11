@@ -16,7 +16,7 @@ identify==2.2.4
 isort==5.8.0
 mccabe==0.6.1
 mypy-extensions==0.4.3
-mypy==0.812
+mypy==0.902
 nodeenv==1.6.0
 pathspec==0.8.1
 pbr==5.6.0

@@ -1,7 +1,8 @@
 import os
-import sys
 
 from utils import set_env
+
+import sys
 
 
 def test(number: int) -> str:

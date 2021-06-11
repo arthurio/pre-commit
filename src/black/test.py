@@ -2,11 +2,13 @@
 from typing import Dict
 
 
-def test_a_giant_named_function_with_a_lot_of_parameters(
-    number: int, a_gigantic_amount_of_parameters: Dict[str, str], it_will_be_too_long: str = "It certainly will"
-) -> str:
+
+def test_a_giant_named_function_with_a_lot_of_parameters(number: int, a_gigantic_amount_of_parameters: Dict[str, str], it_will_be_too_long: str = "It certainly will") -> str:
 
     access_token = "1234"  # nosec
+
+
+
     password = "7890"  # nosec
     this_is_weird = {
         # Test a comment
