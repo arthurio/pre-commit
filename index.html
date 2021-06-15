@@ -20,19 +20,29 @@
                     <h2>format | lint | pre-commit</h2>
                     <h3>✨ 🐍 ✨</h3>
                     <aside class="notes">
-                        Today we are going to talk about tools that will help you achieve python code style consistency across projects and teams.
-                        And how to keep it that way by automating the process with the pre-commit package.
+                        <p>Today we are going to talk about tools that will help you have a consistent python codebase
+                        across projects and teams. And how to keep it that way by automating the process with
+                        pre-commit.</p>
                     </aside>
                 </section>
                 <section>
-                    <p><img style="margin: -10px 15px;" height="50px" src="images/linkedin.png"/><a style="text-decoration: none;" href="https://www.linkedin.com/in/arthurio/" target="_blank">linkedin.com/in/arthurio</a></p>
-                    <p><img style="margin: -10px 15px;" height="50px" src="images/notivize.png"/><a style="text-decoration: none;" href="https://notivize.com" target="_blank">notivize.com</a></p>
-                    <p><img style="margin: -10px 15px;" height="50px" src="images/github.png"/><a style="text-decoration: none;" href="https://github.com/arthurio/pre-commit" target="_blank">github.com/arthurio/pre-commit</a></p>
+                    <p>
+                        <img style="margin: -10px 15px;" height="50px" src="images/linkedin.png"/>
+                        <a style="text-decoration: none;" href="https://www.linkedin.com/in/arthurio/" target="_blank">linkedin.com/in/arthurio</a>
+                    </p>
+                    <p>
+                        <img style="margin: -10px 15px;" height="50px" src="images/notivize.png"/>
+                        <a style="text-decoration: none;" href="https://notivize.com" target="_blank">notivize.com</a>
+                    </p>
+                    <p>
+                        <img style="margin: -10px 15px;" height="50px" src="images/github.png"/>
+                        <a style="text-decoration: none;" href="https://github.com/arthurio/pre-commit" target="_blank">github.com/arthurio/pre-commit</a>
+                    </p>
                     <aside class="notes">
                         <p>I'm Arthur Rio, CTO at Notivize. We have built a notification system plateform so you don't
                         have to build your own. If you need notications with complicated rules, multiple channels,
                         templates, make sure to check us out!</p>
-                        <p>And if you know someone who loves code quality as much as I do and wants to join an early
+                        <p>And if you or someone you know loves code quality as much as I do and wants to join an early
                         seed-funded startup, please reach out to me.</p>
                         <p>The slides, configuration samples and code examples are available on the github repo you
                         see here.</p>
@@ -57,7 +67,7 @@
                         Note:
 
                         - isort: Helps you keep your imports ordered and grouped properly: Standard library, third party, local/application.
-                        - black: Break things down to fit max line length, use double quotes everywhere, proper spacing between function and class definitions, etc.
+                        - black: Max line length, line breaks, quotes, spacing between function and class definitions, trailing commas, etc.
                         - flynt: Transform as many string formatting as possible into f strings.
 
                         TIP: Formatters will make modifications to your code in place. So, if you want to run them
@@ -70,8 +80,6 @@
                         [bandit](https://bandit.readthedocs.io/en/latest/): Find common security issues.
 
                         [flake8](https://flake8.pycqa.org/en/latest/index.html#): Your Tool For Style Guide Enforcement.
-
-                        [flake8-docstrings](https://gitlab.com/pycqa/flake8-docstrings): Flake8 plugin to include checks provided by pep257.
 
                         [mypy](https://mypy.readthedocs.io/en/stable/index.html): Static type checker.
 
@@ -87,8 +95,11 @@
                             2. Unused/missing import
                             3. wildcard import
                             4. missing formatting argument
+                            5. Function redefinition (copy/paste test function)
                             5. etc.
-                        - flake8 plugins: flake8-fastapi, flake8-eradicate, etc. https://github.com/DmytroLitvinov/awesome-flake8-extensions
+                        - flake8 plugins: flake8-docstrings, flake8-fastapi, flake8-eradicate, etc.
+                        Search for `awesome flake8 extentions`.
+
                         Linters help you identify problems before they become one and most of all can help with code
                         completion and hints if you use an IDE or editor that supports it.
 
@@ -184,13 +195,13 @@
                         Note:
                         The configuration for bandit is a bit painful... But it might catch big mistakes like commiting
                         a token, api key or password. So worth having IMO.
-                        - ⚠️  Don't confuse the "ini" file **AND/OR** the "yaml" config file. ⚠️
-                        - assert is removed with compiling to optimized byte code.
+                        - ⚠️  Don't mixup the "ini" file **AND/OR** the "yaml" config file. ⚠️
+                        - Assert is removed with compiling to optimized byte code.
                         - Bandit likes to complain about random, use the secrets module instead if you can or silent
                           individual lines with `# nosec: B311`
                         ---
 
-                        ## flake8/flake8-docstrings
+                        ## flake8 and plugins
 
                         ```
                         # .flake8
@@ -207,13 +218,11 @@
                         Note:
                         Gives you great insights like unused imports, undefined variables, etc.
                         - W503: is not compatible with black and goes against PEP 8.
-                        - D1: I don't care about missing docstrings as I try to keep them to a minimum. Instead I prefer
-                          to rely on explicit variable and function names, as well as type hints.
+                        - D1: Used with flake8-docstrings. I don't care about missing docstrings as I try to keep them
+                        to a minimum. Instead I prefer to rely on explicit variable and function names, as well as type hints.
 
                         Doesn't support pyproject.toml because of legacy code around configuration that needs to be
-                        cleaned up first. Listen to test & code episode 156 where Brian Okken interviews Anthony Sottile,
-                        a maintainer of flake8.
-
+                        cleaned up first.
                         ---
 
                         ## Mypy
@@ -234,8 +243,8 @@
 
                         Note:
                         - Mypy supports pyproject.toml only since the latest release couple weeks ago (0.901)
-                        - `mypy_path`: May not be required if you work on a library or package.
-                          You might need it for an application.
+                        - `mypy_path`: May not be required if you work on a library or package but you might need it
+                        for an application.
                     </section>
                     <section>
                         <h2>pre-commit</h2>
@@ -289,13 +298,13 @@
                         </code></pre>
                         </span>
                         <aside class="notes">
-                            Notice that everything is setup as "local" because I keep track of the packages (black, flake8, etc.) in my dev requirements.
-                            Benefits are:
+                            <p>Notice that everything is setup as "local" because I keep track of the packages (black, flake8, etc.) in my dev requirements.</p>
+                            <p>Benefits are:
                             <ul>
                                 <li>Tools are installed for IDEs instead of separate virtual environment just for pre-commit.</li>
                                 <li>You can have dependabot keep your tools up to date.</li>
                                 <li>Keeps things in sync between dev environment and pre-commit.</li>
-                            </ul>
+                            </ul></p>
                         </aside>
                     </section>
                     <section data-markdown>
@@ -339,6 +348,9 @@
                         ## Install pre-commit hook
 
                         ```bash
+                        # Optional if installed via dev-requirements.txt
+                        pip install pre-commit
+
                         pre-commit install
                         git add .
                         git commit -m "Some bad code"
@@ -377,6 +389,41 @@
                         Note:
                         Devs can skip hooks with `git commit --no-verify`.
                     </section>
+                </section>
+                <section data-markdown>
+                    # Actionable items
+
+                    1. Discuss it with your team and plan your rollout.
+                    2. Run the formatters.
+                    3. Add pre-commit to your dev requirements and CI pipeline.
+                    4. Do a brown bag with your team to get their Editor/IDE setup as well as pre-commit
+
+                    Note:
+
+                    Based on the size of your codebase you have different rollout strategies, but I would recommend
+                    doing one formatter at a time, then add the linters and fix remaining issues.
+
+                    You can ignore the code formatting commit for git blame by adding the rev to a .git-blame-ignore-revs file
+                    and do: `git config blame.ignoreRevsFile .git-blame-ignore-revs`.
+                </section>
+                <section data-markdown>
+                    ## Additional Resources
+
+                    [Ignore bulk change with git blame](https://www.moxio.com/blog/43/ignoring-bulk-change-commits-with-git-blame)
+
+                    [Flake 8 plugins list](https://github.com/DmytroLitvinov/awesome-flake8-extensions)
+
+                    [Pre-commit ci](https://pre-commit.ci)
+
+                    [Test and code podcast](https://testandcode.com) (episodes 156 and 157)
+
+                    [Python bytes podcast](https://pythonbytes.fm) (episode 237)
+
+                    Note:
+                    Anthony Sottile
+                    Brian Okken
+                    Michael Kennedy
+
                 </section>
                 <section>
                     <h1>Q&A</h1>
