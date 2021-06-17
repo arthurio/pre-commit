@@ -66,13 +66,20 @@
 
                         Note:
 
+                        Formatters will make modifications to your code in place. So, if you want to run them manually,
+                        I would suggest you to stage your changes first (`git add`) so that you can see the changes
+                        easily with `git diff`.
+
+                        Why are formatters important?
+                        - Keep the code reviews focused on the logic and structure of the code
+                        - And remove all the "nit" comments about styling issues
+                        - Consistency increases code readability
+
+                        Tools:
+
                         - isort: Helps you keep your imports ordered and grouped properly: Standard library, third party, local/application.
                         - black: Max line length, line breaks, quotes, spacing between function and class definitions, trailing commas, etc.
                         - flynt: Transform as many string formatting as possible into f strings.
-
-                        TIP: Formatters will make modifications to your code in place. So, if you want to run them
-                        manually, I would suggest you to stage your changes first (`git add`) so that you can see the
-                        changes easily with `git diff`.
                         ---
 
                         ## Linters  👮‍♀️👮‍♂️
@@ -190,7 +197,9 @@
                         skips: B101
                         ```
 
-                        - [B101](https://bandit.readthedocs.io/en/latest/plugins/index.html#complete-test-plugin-listing): assert used
+                        [B101](https://bandit.readthedocs.io/en/latest/plugins/index.html#complete-test-plugin-listing): assert used
+
+                        [Suppressing individual lines](https://bandit.readthedocs.io/en/latest/config.html#suppressing-individual-lines): `# nosec: B101`
 
                         Note:
                         The configuration for bandit is a bit painful... But it might catch big mistakes like commiting
@@ -208,18 +217,24 @@
 
                         [flake8]
                         max_line_length = 120
-                        ignore = W503,D1
+                        extend-ignore =
+                            # Whitespace before ":"
+                            E203
+                            # Missing docstring
+                            D1
                         docstring-convention = google
                         ```
 
-                        - [W503](https://www.flake8rules.com/rules/W503.html): Line break occurred before a binary operator
-                        - [D1](http://www.pydocstyle.org/en/stable/error_codes.html): Missing docstring
+                        [Ignore errors](https://flake8.pycqa.org/en/3.1.1/user/ignoring-errors.html): `# noqa: E201`
 
                         Note:
                         Gives you great insights like unused imports, undefined variables, etc.
-                        - W503: is not compatible with black and goes against PEP 8.
-                        - D1: Used with flake8-docstrings. I don't care about missing docstrings as I try to keep them
-                        to a minimum. Instead I prefer to rely on explicit variable and function names, as well as type hints.
+                        - [E203](https://www.flake8rules.com/rules/E203.html): Incompatible with black for things like ranges.
+                        - [D1](http://www.pydocstyle.org/en/stable/error_codes.html): Used with flake8-docstrings.
+                          I don't care about missing docstrings as I try to keep them to a minimum. Instead I prefer to
+                          rely on explicit variable and function names, as well as type hints.
+
+                        Use `extend-ignore` instead of `ignore` to keep defaults.
 
                         Doesn't support pyproject.toml because of legacy code around configuration that needs to be
                         cleaned up first.
@@ -232,6 +247,7 @@
 
                         [tool.mypy]
                         mypy_path = ["src"]
+                        show_error_codes = true
 
                         [[tool.mypy.overrides]]
                         module = [
@@ -240,6 +256,8 @@
                         ]
                         ignore_missing_imports = true
                         ```
+
+                        [Silencing errors](https://mypy.readthedocs.io/en/stable/error_codes.html#silencing-errors-based-on-error-codes): `# type: ignore[arg-type]`
 
                         Note:
                         - Mypy supports pyproject.toml only since the latest release couple weeks ago (0.901)
@@ -391,10 +409,10 @@
                     </section>
                 </section>
                 <section data-markdown>
-                    # Actionable items
+                    # Recap
 
                     1. Discuss it with your team and plan your rollout.
-                    2. Run the formatters.
+                    2. Run the formatters and linters.
                     3. Add pre-commit to your dev requirements and CI pipeline.
                     4. Do a brown bag with your team to get their Editor/IDE setup as well as pre-commit
 
